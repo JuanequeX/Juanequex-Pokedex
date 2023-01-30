@@ -1,0 +1,16 @@
+.body {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.container {
+  align-items: center;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+
+  &__title {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 3rem;
+  }
+}
