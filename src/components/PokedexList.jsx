@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Pokeball from '../assets/pokeball.png'
 
-function PokedexList({ pokemon, setViewDetails }) {
+function PokedexList({ pokemon, setPokemon }) {
   const [pokemonData, setPokemonData] = useState()
 
   const handlePokemon = () => {
@@ -11,14 +11,14 @@ function PokedexList({ pokemon, setViewDetails }) {
         return  response.json()
       })
       .then((data) => {
-        setViewDetails({available: false, ...data})
+        setPokemon({showDetails: false, ...data})
         setPokemonData(data)
       })
     }
   }
 
   const handleDoubleClick = () => {
-    setViewDetails({available: true, ...pokemonData})
+    setPokemon({showDetails: true, ...pokemonData})
   }
 
   return (
