@@ -11,11 +11,9 @@ function Pokedex() {
   const [currentPage, setCurrentPage] = useState(1);
   let [searchParams, setSearchParams] = useSearchParams();
 
-  // let URL = 'https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20'
-
   useEffect(() => {
     setSearchParams({page: currentPage})
-    fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${getOffSet()}&limit=20`)
+    fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${getOffSet()}&limit=${getLimit()}`)
     .then((response) => {
       return response.json()
     }).then((data)  => {
@@ -41,8 +39,14 @@ function Pokedex() {
     if (currentPage === 1) {
       return 0
     }
-
     return (currentPage - 1 ) * 20
+  }
+
+  const getLimit = () => {
+    if (currentPage === 8) {
+      return 10
+    }
+    return 20
   }
 
   return (
