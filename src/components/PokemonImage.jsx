@@ -1,8 +1,8 @@
 import React from 'react'
 
-function PokemonImage({selectedPokemonImage}) {
+function PokemonImage({ src }) {
   return (
-    <img className='pokemon-image' src={selectedPokemonImage} alt="Pokemon" />
+    <img className='pokemon-image' src={src} alt="Pokemon" />
   )
 }
 
