@@ -38,11 +38,11 @@ function Pokedex() {
   }
 
   const getOffSet = () => {
-    // if ("si exite el parametro page en la URL ") {
-    //   setCurrentPage(paginationParam)
-    //   return paginationParam * 20
-    // }
-    return currentPage * 20
+    if (currentPage === 1) {
+      return 0
+    }
+
+    return (currentPage - 1 ) * 20
   }
 
   return (
