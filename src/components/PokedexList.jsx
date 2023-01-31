@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import Pokeball from '../assets/pokeball.png'
 
 function PokedexList({ pokemon, setSelectedPokemon, setViewDetails }) {
   const [pokemonData, setPokemonData] = useState()
@@ -15,12 +16,13 @@ function PokedexList({ pokemon, setSelectedPokemon, setViewDetails }) {
   }
 
   const handleDoubleClick = () => {
-    setViewDetails({available: true, pokemonId: pokemonData.id})
+    setViewDetails({available: true, pokemonData: pokemonData})
   }
 
   return (
-    <div>
-      <button onClick={(e) => handlePokemon(e)} onDoubleClick={() => handleDoubleClick()}  >{pokemon.name}</button>
+    <div onClick={(e) => handlePokemon(e)} onDoubleClick={() => handleDoubleClick()} className='list-container'>
+      <a className="list-container__pokemon-name">{pokemon.name}</a>
+      <img className='list-container__pokeball' src={Pokeball} alt="" />
     </div>
   )
 }

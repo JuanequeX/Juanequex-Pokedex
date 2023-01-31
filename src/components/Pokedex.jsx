@@ -65,7 +65,9 @@ function Pokedex() {
         )}
         { viewDetails.available && (
           <div className='pokedex-container__pokedex__list-cont'>
-            <h1>{viewDetails.pokemonId}</h1>
+            <h1>{viewDetails.pokemonData.id}</h1>
+            <h1>{viewDetails.pokemonData.name}</h1>
+            <button onClick={()=> setViewDetails({available: false})}>Back</button>
           </div>
         )}
 
