@@ -35,7 +35,7 @@
 
       @include desktop {
         margin-top: 6rem;
-        width: 100%;
+        width: 50%;
       }
     }
 
@@ -97,6 +97,10 @@
   flex-direction: column;
   align-items: center;
 
+  @include tablet {
+    margin-top: 7rem auto;
+  }
+
   &__type {
 
     &__types {
@@ -105,7 +109,6 @@
 
       p {
         text-transform: capitalize;
-        // margin: 0 0 0 .5rem;
       }
     }
   }
@@ -156,7 +159,7 @@
         background-color: $dark;
         margin-bottom: 15px;
       }
-  
+
       &__progress-bar {
         height: 100%;
         background: $magenta;
