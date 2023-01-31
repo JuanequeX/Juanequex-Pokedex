@@ -1,12 +1,12 @@
 .list-container {
   align-items: center;
+  backdrop-filter: brightness(60%);
   border-radius: 10px;
   border: solid 1.2px $magenta ;
   display: flex;
   justify-content: space-between;
   margin: 1rem 0;
-  padding: 10px 0;
-  backdrop-filter: brightness(60%);
+  padding: 5px 0;
 
 
   @include tablet {
@@ -14,7 +14,7 @@
   }
 
   @include desktop {
-
+    margin: .3rem 0;
   }
 
   &__pokemon-name {

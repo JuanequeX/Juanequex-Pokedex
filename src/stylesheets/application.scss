@@ -5,13 +5,13 @@
 @import
   './utils/variables';
 
-// global style
-@import
-  './layout/App.scss';
-
 // mixins
 @import
   './mixins/mixins';
+
+// global style
+@import
+  './layout/App.scss';
 
 // Components
 @import

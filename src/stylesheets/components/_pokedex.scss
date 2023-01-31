@@ -1,4 +1,9 @@
 .pokedex-container {
+  height: auto;
+
+  @include desktop {
+    width: 75%;
+  }
 
   &__pokedex {
     display: flex;
@@ -12,38 +17,62 @@
       width: 90%;
     }
 
+    @include tablet {
+      width: 100%;
+    }
+
     &__image-cont {
+      align-items: center;
+      display: flex;
+      flex-direction: column;
 
       @include tablet {
-        margin-top: 10rem;
+        margin-top: 6rem;
         display: flex;
-        flex-direction: column;
         justify-content: flex-start;
-        align-items: center;
         width: 50%;
       }
 
       @include desktop {
-        width: 30%;
-      }
-    }
-
-    &__logo {
-      width: 100%;
-
-      @include tablet {
+        margin-top: 6rem;
         width: 100%;
       }
     }
 
+    &__title {
+      margin: 1rem 0 .5rem;
+
+      @include tablet {
+
+      }
+
+      @include desktop {
+        font-size: $font-bg;
+      }
+    }
+
+    &__logo {
+      width: 50%;
+
+      @include tablet {
+        width: 60%;
+      }
+
+      @include desktop {
+       width: 45%;
+      }
+    }
+
     &__list-cont {
+      width: 100%;
+
 
       @include tablet {
         width: 50%;
       }
 
       @include desktop {
-        width: 70%;
+        width: 100%;
       }
     }
   }
@@ -51,7 +80,7 @@
 
 // Pokemon image
 .pokemon-image {
-  width: 12rem;
+  width: 10rem;
 
   @include tablet {
     width: 14rem;

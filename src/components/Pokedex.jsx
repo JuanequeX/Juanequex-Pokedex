@@ -55,9 +55,13 @@ function Pokedex() {
     <div className='pokedex-container'>
       <div className='pokedex-container__pokedex'>
         <div className='pokedex-container__pokedex__image-cont'>
-          <h2>Juanequex Pokedex</h2>
+          <h2 className='pokedex-container__pokedex__title'>Juanequex Pokedex</h2>
           <img className='pokedex-container__pokedex__logo' src={PokedexLogo}/>
           {selectedPokemonImage && <PokemonImage selectedPokemonImage={selectedPokemonImage}/>}
+          <div>
+            { currentPage > 1 && (<button onClick={() => handlePreviousPage()}>Previous</button> )}
+            { currentPage < Math.ceil(150 / 20) && (<button onClick={() => handleNextPage()}>next</button>)}
+          </div>
         </div>
         { !viewDetails.available && (
             <div className='pokedex-container__pokedex__list-cont'>
@@ -71,11 +75,6 @@ function Pokedex() {
             <button onClick={()=> setViewDetails({available: false})}>Back</button>
           </div>
         )}
-
-      </div>
-      <div>
-        { currentPage > 1 && (<button onClick={() => handlePreviousPage()}>Previous</button> )}
-        { currentPage < Math.ceil(150 / 20) && (<button onClick={() => handleNextPage()}>next</button>)}
       </div>
     </div>
   )
