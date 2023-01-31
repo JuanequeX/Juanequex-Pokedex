@@ -9,7 +9,7 @@ function Pokedex() {
   const [selectedPokemon, setSelectedPokemon] = useState({})
   const [selectedPokemonImage, setSelectedPokemonImage] =useState(false)
   const [currentPage, setCurrentPage] = useState(1);
-  const [viewDetails, setViewDetails] = useState(false)
+  const [viewDetails, setViewDetails] = useState({available: false})
   let [searchParams, setSearchParams] = useSearchParams();
 
 
@@ -58,14 +58,14 @@ function Pokedex() {
           <img className='pokedex-container__pokedex__logo' src={PokedexLogo}/>
           {selectedPokemonImage && <PokemonImage selectedPokemonImage={selectedPokemonImage}/>}
         </div>
-        { !viewDetails && (
+        { !viewDetails.available && (
             <div className='pokedex-container__pokedex__list-cont'>
               {pokemons.map((pokemon, index) => <PokedexList key={index} pokemon={pokemon} setViewDetails={setViewDetails} setSelectedPokemon={setSelectedPokemon} />)}
             </div>
         )}
-        { viewDetails && (
+        { viewDetails.available && (
           <div className='pokedex-container__pokedex__list-cont'>
-            <h1>Tacos de asada</h1>
+            <h1>{viewDetails.pokemonId}</h1>
           </div>
         )}
 
