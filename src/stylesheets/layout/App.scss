@@ -8,11 +8,12 @@
   align-items: center;
   background-color: $white;
   display: flex;
-  height: 100vh;
+  height: 100%;
   justify-content: center;
   text-align: center;
 
   @include desktop {
-    height: 100vh;
+    height: auto;
+    padding: 2rem 0;
   }
 }
