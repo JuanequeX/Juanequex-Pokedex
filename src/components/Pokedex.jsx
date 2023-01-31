@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import PokedexList from './PokedexList'
 import PokemonImage from './PokemonImage'
 import PokedexLogo from '../assets/pokedex-logo.png'
@@ -18,7 +18,7 @@ function Pokedex() {
       <div className='pokedex-container__pokedex'>
         <div className='pokedex-container__pokedex__image-cont'>
           <h2 className='pokedex-container__pokedex__title'>Juanequex Pokedex</h2>
-          <img className='pokedex-container__pokedex__logo' src={PokedexLogo}/>
+          <img alt="Pokedex Logo" className='pokedex-container__pokedex__logo' src={PokedexLogo}/>
           {selectedPokemonImage && <PokemonImage src={selectedPokemonImage}/>}
           {!pokemon.showDetails && (
             <div className='pagination-button-container'>
@@ -54,7 +54,7 @@ function Pokedex() {
               <div className='skill__stats-container__ranges-container'>
                 {pokemon.stats.map((stat, key) =>
                   <div key={key} className='skill__stats-container__ranges-container__progress' >
-                    <div className='skill__stats-container__ranges-container__progress-bar' style={{width:`${stat.base_stat}%`}} >
+                    <div className='skill__stats-container__ranges-container__progress-bar' style={{width:`${stat.base_stat > 100 ? 100 : stat.base_stat}%`}} >
                       <span className='skill__stats-container__ranges-container__progress-bar-text'>{stat.base_stat}%</span>
                     </div>
                   </div>

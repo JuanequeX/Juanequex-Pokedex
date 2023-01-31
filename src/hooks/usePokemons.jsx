@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import { useState, useEffect } from 'react'
 import { useSearchParams } from 'react-router-dom'
 
 function usePokemons() {
@@ -15,6 +15,7 @@ function usePokemons() {
     }).then((data)  => {
       setPokemons(data.results)
     })
+    // eslint-disable-next-line
   },[currentPage])
 
   const getOffSet = () => {

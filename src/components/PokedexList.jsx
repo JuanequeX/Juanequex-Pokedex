@@ -23,7 +23,7 @@ function PokedexList({ pokemon, setPokemon }) {
 
   return (
     <div onClick={handlePokemon} onDoubleClick={handleDoubleClick} className='list-container'>
-      <a className="list-container__pokemon-name">{pokemon.name}</a>
+      <p className="list-container__pokemon-name">{pokemon.name}</p>
       <img className='list-container__pokeball' src={Pokeball} alt="" />
     </div>
   )
