@@ -50,6 +50,7 @@ function Pokedex() {
     }
     return 20
   }
+  console.log(viewDetails)
 
   return (
     <div className='pokedex-container'>
@@ -69,9 +70,38 @@ function Pokedex() {
             </div>
         )}
         { viewDetails.available && (
-          <div className='pokedex-container__pokedex__list-cont'>
-            <h1>{viewDetails.pokemonData.id}</h1>
-            <h1>{viewDetails.pokemonData.name}</h1>
+          <div className='skill'>
+            <div className='skill__type'>
+              <span>Type:</span>
+              <div className='skill__type__types'>
+                {viewDetails.pokemonData.types.map((type, key) => <p key={key}>{type.type.name}</p>)}
+              </div>
+            </div>
+            <div className='skill__trait'>
+              <p className='skill__trait__number'>{`Number: ${viewDetails.pokemonData.id}`}</p>
+              <p className='skill__trait__name'>{`Name: ${viewDetails.pokemonData.name}`}</p>
+              <p className='skill__trait__height'>{`Height: ${viewDetails.pokemonData.height}`}</p>
+              <p className='skill__trait__weight'>{`Weight: ${viewDetails.pokemonData.weight}`}</p>
+            </div>
+            <div className='skill__stats-continer'>
+              <div className='skill__stats'>
+                <p>stats</p>
+                {viewDetails.pokemonData.stats.map((stat, key) => <p key={key}>{stat.stat.name}</p>)}
+              </div>
+              <div className='skill__ranges-container'>
+                {viewDetails.pokemonData.stats.map((stat, key) =>
+                  <div key={key} className='skill__ranges-container__progress' >
+                    <div className='skill__ranges-container__progress-bar' style={{width:`${stat.base_stat}%`}} >
+                      <span className='skill__ranges-container__progress-bar-text'>{stat.base_stat}%</span>
+                    </div>
+                  </div>
+                )}
+              </div>
+              <div className='skill__ability-container'>
+                <p>Abilities</p>
+                {viewDetails.pokemonData.abilities.map((ability, key) => <p key={key}>{ability.ability.name}</p>)}
+              </div>
+            </div>
             <button onClick={()=> setViewDetails({available: false})}>Back</button>
           </div>
         )}
@@ -79,5 +109,5 @@ function Pokedex() {
     </div>
   )
 }
-
+// style="width:75%;"
 export default Pokedex
