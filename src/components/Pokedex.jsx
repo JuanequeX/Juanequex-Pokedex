@@ -2,47 +2,13 @@ import React, {useState, useEffect} from 'react'
 import PokedexList from './PokedexList'
 import PokemonImage from './PokemonImage'
 import PokedexLogo from '../assets/pokedex-logo.png'
-import { useSearchParams } from 'react-router-dom';
+import usePokemons from '../hooks/usePokemons'
 
 function Pokedex() {
-  const [pokemons, setPokemons] = useState([])
-  const [currentPage, setCurrentPage] = useState(1);
+  const {pokemons, currentPage, handleNextPage, handlePreviousPage} = usePokemons()
   const [viewDetails, setViewDetails] = useState({available: false})
-  let [,setSearchParams] = useSearchParams();
 
   const selectedPokemonImage =  viewDetails?.sprites?.front_default || ""
-
-  useEffect(() => {
-    setSearchParams({page: currentPage})
-    fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${getOffSet()}&limit=${getLimit()}`)
-    .then((response) => {
-      return response.json()
-    }).then((data)  => {
-      setPokemons(data.results)
-    })
-  },[currentPage])
-
-  const handleNextPage = () => {
-    setCurrentPage(currentPage + 1)
-  }
-
-  const handlePreviousPage = () => {
-    setCurrentPage(currentPage - 1)
-  }
-
-  const getOffSet = () => {
-    if (currentPage === 1) {
-      return 0
-    }
-    return (currentPage - 1 ) * 20
-  }
-
-  const getLimit = () => {
-    if (currentPage === 8) {
-      return 10
-    }
-    return 20
-  }
 
   const goBack = () => {
     setViewDetails({available: false})
