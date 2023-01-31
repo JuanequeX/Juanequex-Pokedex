@@ -11,19 +11,19 @@ function Pokedex() {
   const [currentPage, setCurrentPage] = useState(1);
   let [searchParams, setSearchParams] = useSearchParams();
 
-  let URL = 'https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20'
+  // let URL = 'https://pokeapi.co/api/v2/pokemon/?offset=20&limit=20'
 
   useEffect(() => {
-    fetch(`${URL}`)
+    setSearchParams({page: currentPage})
+    fetch(`https://pokeapi.co/api/v2/pokemon/?offset=${getOffSet()}&limit=20`)
     .then((response) => {
       return response.json()
     }).then((data)  => {
-      setSearchParams({page: currentPage})
       setPokemons(data.results)
     })
-  },[])
-  useEffect(() => {
+  },[currentPage])
 
+  useEffect(() => {
     setSelectedPokemonImage(selectedPokemon?.sprites?.front_default)
   },[selectedPokemon])
 
@@ -35,6 +35,14 @@ function Pokedex() {
   const handlePreviousPage = () => {
     setSearchParams({page: currentPage - 1})
     setCurrentPage(currentPage - 1)
+  }
+
+  const getOffSet = () => {
+    // if ("si exite el parametro page en la URL ") {
+    //   setCurrentPage(paginationParam)
+    //   return paginationParam * 20
+    // }
+    return currentPage * 20
   }
 
   return (
