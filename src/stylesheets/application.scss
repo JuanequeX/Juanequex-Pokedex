@@ -1,13 +1,14 @@
 //font
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
 
-// Variables
-@import
-  './utils/variables';
-
 // mixins
 @import
-  './mixins/mixins';
+'./mixins/mixins';
+
+// Utils
+@import
+  './utils/variables',
+  './utils/buttons';
 
 // global style
 @import
