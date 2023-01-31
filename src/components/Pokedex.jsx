@@ -7,7 +7,7 @@ import { useSearchParams } from 'react-router-dom';
 function Pokedex() {
   const [pokemons, setPokemons] = useState([])
   const [selectedPokemon, setSelectedPokemon] = useState({})
-  const [selectedPokemonImage, setSelectedPokemonImage] =useState(false)
+  const [selectedPokemonImage, setSelectedPokemonImage] = useState(false)
   const [currentPage, setCurrentPage] = useState(1);
   const [viewDetails, setViewDetails] = useState({available: false})
   let [searchParams, setSearchParams] = useSearchParams();
@@ -51,6 +51,11 @@ function Pokedex() {
     return 20
   }
 
+  const goBack = () => {
+    setViewDetails({available: false})
+    setSelectedPokemonImage(!selectedPokemonImage)
+  }
+
   return (
     <div className='pokedex-container'>
       <div className='pokedex-container__pokedex'>
@@ -58,10 +63,12 @@ function Pokedex() {
           <h2 className='pokedex-container__pokedex__title'>Juanequex Pokedex</h2>
           <img className='pokedex-container__pokedex__logo' src={PokedexLogo}/>
           {selectedPokemonImage && <PokemonImage selectedPokemonImage={selectedPokemonImage}/>}
-         { !viewDetails.available && (<div>
-            { currentPage > 1 && (<button onClick={() => handlePreviousPage()}>Previous</button> )}
-            { currentPage < Math.ceil(150 / 20) && (<button onClick={() => handleNextPage()}>next</button>)}
-          </div>)}
+          {!viewDetails.available && (
+            <div className='pagination-button-container'>
+              { currentPage > 1 && (<button className='pagination-button-container__previous' onClick={() => handlePreviousPage()}>Previous</button> )}
+              { currentPage < Math.ceil(150 / 20) && (<button className='pagination-button-container__next' onClick={() => handleNextPage()}>next</button>)}
+            </div>
+          )}
         </div>
         { !viewDetails.available && (
             <div className='pokedex-container__pokedex__list-cont'>
@@ -103,12 +110,12 @@ function Pokedex() {
                 {viewDetails.pokemonData.abilities.map((ability, key) => <p key={key}>⌇✶ {ability.ability.name}</p>)}
               </div>
             </div>
-               <button onClick={()=> setViewDetails({available: false})}>Back</button>
+               <button className='back-button' onClick={()=> goBack()}>Back</button>
           </div>
         )}
       </div>
     </div>
   )
 }
-// style="width:75%;"
+
 export default Pokedex
