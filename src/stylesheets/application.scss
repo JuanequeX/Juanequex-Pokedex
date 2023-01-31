@@ -1,3 +1,10 @@
+//font
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300&display=swap');
+
+// Variables
+@import
+  './utils/variables';
+
 // global style
 @import
   './layout/App.scss';
@@ -8,4 +15,5 @@
 
 // Components
 @import
-  './components/pokedex';
+  './components/pokedex',
+  './components/pokedexList';
