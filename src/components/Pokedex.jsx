@@ -9,7 +9,9 @@ function Pokedex() {
   const [selectedPokemon, setSelectedPokemon] = useState({})
   const [selectedPokemonImage, setSelectedPokemonImage] =useState(false)
   const [currentPage, setCurrentPage] = useState(1);
+  const [viewDetails, setViewDetails] = useState(false)
   let [searchParams, setSearchParams] = useSearchParams();
+
 
   useEffect(() => {
     setSearchParams({page: currentPage})
@@ -56,9 +58,17 @@ function Pokedex() {
           <img className='pokedex-container__pokedex__logo' src={PokedexLogo}/>
           {selectedPokemonImage && <PokemonImage selectedPokemonImage={selectedPokemonImage}/>}
         </div>
-        <div className='pokedex-container__pokedex__list-cont'>
-          {pokemons.map((pokemon, index) => <PokedexList key={index} pokemon={pokemon} setSelectedPokemon={setSelectedPokemon} />)}
-        </div>
+        { !viewDetails && (
+            <div className='pokedex-container__pokedex__list-cont'>
+              {pokemons.map((pokemon, index) => <PokedexList key={index} pokemon={pokemon} setViewDetails={setViewDetails} setSelectedPokemon={setSelectedPokemon} />)}
+            </div>
+        )}
+        { viewDetails && (
+          <div className='pokedex-container__pokedex__list-cont'>
+            <h1>Tacos de asada</h1>
+          </div>
+        )}
+
       </div>
       <div>
         { currentPage > 1 && (<button onClick={() => handlePreviousPage()}>Previous</button> )}
