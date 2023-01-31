@@ -55,6 +55,7 @@ function Pokedex() {
     <div className='pokedex-container'>
       <div className='pokedex-container__pokedex'>
         <div className='pokedex-container__pokedex__image-cont'>
+          <h2>Juanequex Pokedex</h2>
           <img className='pokedex-container__pokedex__logo' src={PokedexLogo}/>
           {selectedPokemonImage && <PokemonImage selectedPokemonImage={selectedPokemonImage}/>}
         </div>
