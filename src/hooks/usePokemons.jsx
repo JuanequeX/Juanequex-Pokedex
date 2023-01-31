@@ -13,7 +13,7 @@ function usePokemons() {
     .then((response) => {
       return response.json()
     }).then((data)  => {
-      setPokemons(data.results)
+      if(data) setPokemons(data.results)
     })
     // eslint-disable-next-line
   },[currentPage])

@@ -12,7 +12,7 @@ function PokedexList({ pokemon, setPokemon }) {
       })
       .then((data) => {
         setPokemon({showDetails: false, ...data})
-        setPokemonData(data)
+        if(data) setPokemonData(data)
       })
     }
   }
