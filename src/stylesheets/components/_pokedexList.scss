@@ -1,0 +1,30 @@
+.list-container {
+  align-items: center;
+  border-radius: 10px;
+  border: solid 1.2px $magenta ;
+  display: flex;
+  justify-content: space-between;
+  margin: 1rem 0;
+  padding: 10px 0;
+  backdrop-filter: brightness(60%);
+
+
+  @include tablet {
+
+  }
+
+  @include desktop {
+
+  }
+
+  &__pokemon-name {
+    text-transform: capitalize;
+    margin-left: 1.5rem;
+    color: $white;
+    font-size: $font-sm;
+  }
+
+  &__pokeball {
+    margin-right: 1.5rem;
+  }
+}

@@ -1,12 +1,13 @@
 .pokedex-container {
+
   &__pokedex {
-    width: 100%;
+    width: 80%;
+    margin: 0 auto;
     display: flex;
-    flex-direction: row;
-    height: 80vh;
+    flex-direction: column;
+    height: 100%;
 
     &__image-cont {
-      border: 2px solid red;
 
       @include desktop {
         width: 30%;
@@ -17,11 +18,10 @@
     }
 
     &__logo {
-      width: 100%;
+      width: 80%;
     }
 
     &__list-cont {
-      border: 2px solid red;
 
       @include desktop {
         width: 70%; 
