@@ -50,7 +50,6 @@ function Pokedex() {
     }
     return 20
   }
-  console.log(viewDetails)
 
   return (
     <div className='pokedex-container'>
@@ -59,10 +58,10 @@ function Pokedex() {
           <h2 className='pokedex-container__pokedex__title'>Juanequex Pokedex</h2>
           <img className='pokedex-container__pokedex__logo' src={PokedexLogo}/>
           {selectedPokemonImage && <PokemonImage selectedPokemonImage={selectedPokemonImage}/>}
-          <div>
+         { !viewDetails.available && (<div>
             { currentPage > 1 && (<button onClick={() => handlePreviousPage()}>Previous</button> )}
             { currentPage < Math.ceil(150 / 20) && (<button onClick={() => handleNextPage()}>next</button>)}
-          </div>
+          </div>)}
         </div>
         { !viewDetails.available && (
             <div className='pokedex-container__pokedex__list-cont'>
@@ -74,7 +73,7 @@ function Pokedex() {
             <div className='skill__type'>
               <span>Type:</span>
               <div className='skill__type__types'>
-                {viewDetails.pokemonData.types.map((type, key) => <p key={key}>{type.type.name}</p>)}
+                {viewDetails.pokemonData.types.map((type, key) => <p key={key}>⌇✶ {type.type.name}</p>)}
               </div>
             </div>
             <div className='skill__trait'>
@@ -83,26 +82,28 @@ function Pokedex() {
               <p className='skill__trait__height'>{`Height: ${viewDetails.pokemonData.height}`}</p>
               <p className='skill__trait__weight'>{`Weight: ${viewDetails.pokemonData.weight}`}</p>
             </div>
-            <div className='skill__stats-continer'>
-              <div className='skill__stats'>
-                <p>stats</p>
+            <p className='skill__stats-title'>stats 📊</p>
+            <div className='skill__stats-container'>
+              <div className='skill__stats-container__stats'>
                 {viewDetails.pokemonData.stats.map((stat, key) => <p key={key}>{stat.stat.name}</p>)}
               </div>
-              <div className='skill__ranges-container'>
+              <div className='skill__stats-container__ranges-container'>
                 {viewDetails.pokemonData.stats.map((stat, key) =>
-                  <div key={key} className='skill__ranges-container__progress' >
-                    <div className='skill__ranges-container__progress-bar' style={{width:`${stat.base_stat}%`}} >
-                      <span className='skill__ranges-container__progress-bar-text'>{stat.base_stat}%</span>
+                  <div key={key} className='skill__stats-container__ranges-container__progress' >
+                    <div className='skill__stats-container__ranges-container__progress-bar' style={{width:`${stat.base_stat}%`}} >
+                      <span className='skill__stats-container__ranges-container__progress-bar-text'>{stat.base_stat}%</span>
                     </div>
                   </div>
                 )}
               </div>
-              <div className='skill__ability-container'>
-                <p>Abilities</p>
-                {viewDetails.pokemonData.abilities.map((ability, key) => <p key={key}>{ability.ability.name}</p>)}
+            </div>
+            <div className='skill__ability-container'>
+              <h2>Abilities</h2>
+              <div className='skill__type__types'>
+                {viewDetails.pokemonData.abilities.map((ability, key) => <p key={key}>⌇✶ {ability.ability.name}</p>)}
               </div>
             </div>
-            <button onClick={()=> setViewDetails({available: false})}>Back</button>
+               <button onClick={()=> setViewDetails({available: false})}>Back</button>
           </div>
         )}
       </div>
