@@ -6,14 +6,14 @@ function PokemonDetails({pokemon, resetPokemon}) {
       <div className='skill__type'>
         <span>Type:</span>
         <div className='skill__type__types'>
-          {pokemon.types.map((type, key) => <p key={key}>⌇✶ {type.type.name}</p>)}
+          {pokemon.types.map((type, key) => <p key={key}>✶ {type.type.name}</p>)}
         </div>
       </div>
       <div className='skill__trait'>
-        <p className='skill__trait__number'>{`Number: ${pokemon.id}`}</p>
-        <p className='skill__trait__name'>{`Name: ${pokemon.name}`}</p>
-        <p className='skill__trait__height'>{`Height: ${pokemon.height}`}</p>
-        <p className='skill__trait__weight'>{`Weight: ${pokemon.weight}`}</p>
+        <p>{`✨ Number: ${pokemon.id}`}</p>
+        <p>{`✨ Name: ${pokemon.name}`}</p>
+        <p>{`✨ Height: ${pokemon.height}`}</p>
+        <p>{`✨ Weight: ${pokemon.weight}`}</p>
       </div>
       <p className='skill__stats-title'>stats 📊</p>
       <div className='skill__stats-container'>
@@ -33,7 +33,7 @@ function PokemonDetails({pokemon, resetPokemon}) {
       <div className='skill__ability-container'>
         <h2>Abilities</h2>
         <div className='skill__type__types'>
-          {pokemon.abilities.map((ability, key) => <p key={key}>⌇✶ {ability.ability.name}</p>)}
+          {pokemon.abilities.map((ability, key) => <p key={key}>✶ {ability.ability.name}</p>)}
         </div>
       </div>
         <button className='back-button' onClick={resetPokemon}>Back</button>

@@ -1,8 +1,5 @@
 .pagination-button-container {
-
-  @include tablet {
-    margin-top: 1rem;
-  }
+  margin-top: 1rem;
 
   &__previous {
     border-radius: 3px;
