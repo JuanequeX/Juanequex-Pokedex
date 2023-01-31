@@ -1,2 +1,11 @@
+// global style
 @import
   './layout/App.scss';
+
+// mixins
+@import
+  './mixins/mixins';
+
+// Components
+@import
+  './components/pokedex';
